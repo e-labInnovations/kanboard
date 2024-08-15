@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__.'/../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 $dbUrlParser = new PicoDb\UrlParser();
 
@@ -27,8 +27,8 @@ if (file_exists($config_file)) {
     require $config_file;
 }
 
-require __DIR__.'/constants.php';
-require __DIR__.'/check_setup.php';
+require __DIR__ . '/constants.php';
+require __DIR__ . '/check_setup.php';
 
 $container = new Pimple\Container;
 $container->register(new Kanboard\ServiceProvider\MailProvider());
@@ -56,3 +56,4 @@ $container->register(new Kanboard\ServiceProvider\ApiProvider());
 $container->register(new Kanboard\ServiceProvider\CommandProvider());
 $container->register(new Kanboard\ServiceProvider\ObjectStorageProvider());
 $container->register(new Kanboard\ServiceProvider\PluginProvider());
+$container->register(new Kanboard\ServiceProvider\GraphqlProvider());
