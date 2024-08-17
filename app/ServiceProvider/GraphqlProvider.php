@@ -34,16 +34,17 @@ class GraphqlProvider implements ServiceProviderInterface {
     );
 
     $rootValue = ['prefix' => 'Kanboard'];
-
     $server = new StandardServer([
       'schema' => $schema,
       'rootValue' => $rootValue,
-      'context' => $container,
+      'context' => $this->buildContext($container),
     ]);
-
-
 
     $container['graphql'] = $server;
     return $container;
+  }
+
+  protected function buildContext(Container $container) {
+    return ['container' => $container, 'serverVariable' => $_SERVER];
   }
 }
